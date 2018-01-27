@@ -9,17 +9,17 @@
 Pod::Spec.new do |s|
   s.name             = 'ScrollCoordinator'
   s.version          = '0.1.0'
-  s.summary          = 'ScrollCoordinator allows you to attach gestures to scrollviews and perform behaviours on these gestures.'
+  s.summary          = 'ScrollCoordinator allows you to attach gestures to scrollviews and perform behaviours on these gestures'
 
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+ScrollCoordinator is an innovative way to make views behave the way you want them to by listening to gesture and scroll events. This pod comes with the Behaviours to hide the navigation, bottom and tab bar & AnchorBehaviour which makes your outer scrollview scroll upto a certain anchor point when inner nested scrollviews are scrolled
+                        DESC
 
   s.homepage         = 'https://github.com/shubhankaryash/ScrollCoordinator'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'shubhankaryash' => 'shubhankaryash' }
+  s.author           = { 'shubhankaryash' => 'shubhankar.yash@flipkart.com' }
   s.source           = { :git => 'https://github.com/shubhankaryash/ScrollCoordinator.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
@@ -31,7 +31,7 @@ TODO: Add long description of the pod here.
   #   'ScrollCoordinator' => ['ScrollCoordinator/Assets/*.png']
   # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  # s.public_header_files = 'Pod/Classes/**/*'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

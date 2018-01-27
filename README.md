@@ -1,6 +1,5 @@
 # ScrollCoordinator
 
-[![CI Status](http://img.shields.io/travis/shubhankaryash/ScrollCoordinator.svg?style=flat)](https://travis-ci.org/shubhankaryash/ScrollCoordinator)
 [![Version](https://img.shields.io/cocoapods/v/ScrollCoordinator.svg?style=flat)](http://cocoapods.org/pods/ScrollCoordinator)
 [![License](https://img.shields.io/cocoapods/l/ScrollCoordinator.svg?style=flat)](http://cocoapods.org/pods/ScrollCoordinator)
 [![Platform](https://img.shields.io/cocoapods/p/ScrollCoordinator.svg?style=flat)](http://cocoapods.org/pods/ScrollCoordinator)
