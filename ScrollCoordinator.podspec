@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ScrollCoordinator'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'ScrollCoordinator allows you to attach gestures to scrollviews and perform behaviours on these gestures'
 
 
