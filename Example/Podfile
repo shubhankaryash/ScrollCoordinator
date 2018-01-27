@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ScrollCoordinator_Example' do
+  pod 'ScrollCoordinator', :path => '../'
+
+  target 'ScrollCoordinator_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
