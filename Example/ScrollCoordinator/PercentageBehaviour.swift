@@ -57,6 +57,4 @@ class PercentageBehaviour: Behaviour {
         let height = headerView.percentageView.frame.height
         headerView.percentageView.frame = CGRect(x: 0, y: 0, width: newWidth, height: height)
     }
-    
-    
 }
