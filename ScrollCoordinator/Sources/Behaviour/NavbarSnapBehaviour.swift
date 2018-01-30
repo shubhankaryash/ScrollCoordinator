@@ -63,13 +63,8 @@ public class NavbarSnapBehaviour: SnapBehaviour {
         
         let top = adjustTopInset(view.frame.origin.y + view.frame.height)
         
-        var contentInset = getContentInsets(scrollView: scrollView)
-        contentInset.top = top
-        scrollView.contentInset = contentInset
-        
-        var scrollInsets = scrollView.scrollIndicatorInsets
-        scrollInsets.top = top
-        scrollView.scrollIndicatorInsets = scrollInsets
+        scrollView.contentInset.top = top
+        scrollView.scrollIndicatorInsets.top = top
     }
     
     //Need these due to iOS 11 compatibility issues

@@ -29,7 +29,7 @@ class CustomBehaviourViewController: UIViewController, ScrollCoordinatorManager 
     /*
      Methods of ScrollCoordinatorManager protocol
      */
-    func getScrollCoordinatorLayout() -> ScrollCoordinator? {
+    func getScrollCoordinator() -> ScrollCoordinator? {
         return scrollCoordinator
     }
     

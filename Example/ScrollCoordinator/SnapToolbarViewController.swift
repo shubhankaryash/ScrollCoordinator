@@ -31,7 +31,11 @@ class SnapToolbarViewController: UIViewController, ScrollCoordinatorManager {
         navigationItem.title = "SnapBehaviour(Nav+ToolBar)"
 
         toolbar = UIToolbar(frame: CGRect(x: 0, y: view.bounds.size.height - 44, width: view.bounds.width, height: 44))
-        toolbar.barTintColor = UIColor(white: 230/255, alpha: 1)
+        
+        let premierLeagueView = UIImageView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44))
+        premierLeagueView.image = UIImage(named: "premierLeagueTitle")
+        
+        toolbar.addSubview(premierLeagueView)
         view.addSubview(toolbar)
         
         performCoordinatorOperations()
@@ -70,7 +74,7 @@ class SnapToolbarViewController: UIViewController, ScrollCoordinatorManager {
     /*
      Methods of ScrollCoordinatorManager protocol
      */
-    func getScrollCoordinatorLayout() -> ScrollCoordinator? {
+    func getScrollCoordinator() -> ScrollCoordinator? {
         return scrollCoordinator
     }
     

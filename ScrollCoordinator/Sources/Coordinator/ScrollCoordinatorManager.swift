@@ -16,7 +16,7 @@ public protocol ScrollCoordinatorManager: class {
      */
     
     //This is the method through which the necessary views can get the CoordinatorLayout being used by the manager
-    func getScrollCoordinatorLayout() -> ScrollCoordinator?
+    func getScrollCoordinator() -> ScrollCoordinator?
     
     //This should be the method to add the required behaviour associated with a view to the CoordinatorLayout
     func addBehaviour(view: UIView, behaviour: Behaviour)
