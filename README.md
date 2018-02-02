@@ -131,7 +131,7 @@ func vcDidSubLayoutViews() {
 
 ## Author
 
-shubhankaryash and manishPatwari
+[shubhankaryash](https://github.com/shubhankaryash) and [manishPatwari](https://github.com/manishPatwari)
 
 ## License
 
