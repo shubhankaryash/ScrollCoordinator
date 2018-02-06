@@ -26,6 +26,8 @@ class AnchorBehaviourViewController: UIViewController, ScrollCoordinatorManager 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "AnchorBehaviour"
+        navigationItem.backBarButtonItem?.title = "Back"
         setupTableView()
         registerScrollViewToCoordinator(scrollView: tableView)
         tableViewDidLoad()

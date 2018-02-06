@@ -27,6 +27,8 @@ class SnapTabBarViewController: UIViewController, ScrollCoordinatorManager {
         super.viewDidLoad()
         setupTableView()
         
+        navigationItem.title = "SnapBehaviour(Nav+TabBar)"
+        
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         } else {

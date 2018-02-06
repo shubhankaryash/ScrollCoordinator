@@ -18,6 +18,14 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'ScrollCoordinator'
 ```
+## Screenshots
+
+![Hiding the navigation bar and the toolbar](Screenshots/SnapBehaviour(ToolBar).gif?raw=true "Hiding the navigation bar and Toolbar")
+![Hiding the navigation bar and the tabbar](Screenshots/SnapBehaviour(TabBar).gif?raw=true "Hiding the navigation bar and Toolbar")
+![Anchoring the scroll view](Screenshots/AnchorBehaviour.gif?raw=true "Anchoring the ScrollView")
+
+
+
 ## Usage
 
 For the usage make your view controller conform to the ScrollCoordinatorManager protocol. The scrollCoordinator needs to be initialised if you are planning to use it. You can have your custom logic of when you want/need to initialise this. The implementation here describes the minimal content within the methods. You could have your custom logic and perform further operation if you want to, but passing these events on to the scroll coordinator is a must.

@@ -29,6 +29,8 @@ class SnapToolbarViewController: UIViewController, ScrollCoordinatorManager {
         setupTableView()
         
         navigationItem.title = "SnapBehaviour(Nav+ToolBar)"
+        navigationItem.backBarButtonItem?.title = "Back"
+        
 
         toolbar = UIToolbar(frame: CGRect(x: 0, y: view.bounds.size.height - 44, width: view.bounds.width, height: 44))
         
