@@ -20,9 +20,15 @@ pod 'ScrollCoordinator'
 ```
 ## Screenshots
 
-![Hiding the navigation bar and the toolbar](Screenshots/SnapBehaviour(ToolBar).gif?raw=true "Hiding the navigation bar and Toolbar")
-![Hiding the navigation bar and the tabbar](Screenshots/SnapBehaviour(TabBar).gif?raw=true "Hiding the navigation bar and Toolbar")
-![Anchoring the scroll view](Screenshots/AnchorBehaviour.gif?raw=true "Anchoring the ScrollView")
+Hiding the NavigationBar and ToolBar <br />
+<img src="Screenshots/SnapBehaviour(ToolBar).gif" width="400" height="700">
+
+Hiding the NavigationBar and TabBar <br />
+<img src="Screenshots/SnapBehaviour(TabBar).gif" width="400" height="700">
+
+
+Anchoring the ScrollView <br />
+<img src="Screenshots/AnchorBehaviour.gif" width="400" height="700">
 
 
 
