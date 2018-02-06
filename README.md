@@ -22,6 +22,7 @@ pod 'ScrollCoordinator'
 
 Hiding the NavigationBar and ToolBar
 ![Hiding the navigation bar and the toolbar](Screenshots/SnapBehaviour(ToolBar).gif?v=4&s=100)
+<img src="Screenshots/SnapBehaviour(ToolBar).gif" width="200" height="200">
 
 Hiding the NavigationBar and TabBar
 ![Hiding the navigation bar and the tabbar](Screenshots/SnapBehaviour(TabBar).gif?v=4&s=50)
