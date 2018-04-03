@@ -39,6 +39,9 @@ public class SnapBehaviour: Behaviour {
     var startingVerticalPosition: CGFloat = 0
     var currentSnapState = SnapState.EXPANDED
     
+    //Whether the startingPosition should be derived
+    var shouldDerivePosition = true
+    
     //Defines whether the we need the "fade away" effect during snapping
     let isFadeEnabled: Bool
     
@@ -52,13 +55,19 @@ public class SnapBehaviour: Behaviour {
     //For delegating snap updates
     weak var snapDelegate: SnapDelegate?
     
-    public init(snapDirection: SnapDirection, view: UIView, isFadeEnabled: Bool = false, refreshControl: UIRefreshControl?, snapDelegate: SnapDelegate?) {
+    public init(snapDirection: SnapDirection, view: UIView, isFadeEnabled: Bool = false, refreshControl: UIRefreshControl?, snapDelegate: SnapDelegate?, startPostion: CGFloat? = nil) {
         self.snapDirection = snapDirection
         self.view = view
         self.isFadeEnabled = isFadeEnabled
         self.refreshControl = refreshControl
         self.snapDelegate = snapDelegate
-        oldStatusBarHeight = getStatusBarHeight()
+        
+        if let position = startPostion {
+            self.startingVerticalPosition = position
+            self.shouldDerivePosition = false
+        }
+        
+        oldStatusBarHeight = ScrollCoordinatorUtils.getStatusBarHeight()
         NotificationCenter.default.addObserver(self, selector: #selector(SnapBehaviour.statusBarHeightDidChange), name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
     }
     
@@ -67,7 +76,7 @@ public class SnapBehaviour: Behaviour {
     }
     
     @objc func statusBarHeightDidChange() {
-        newStatusBarHeight = getStatusBarHeight()
+        newStatusBarHeight = ScrollCoordinatorUtils.getStatusBarHeight()
         if let newHeight = newStatusBarHeight, let oldHeight = oldStatusBarHeight, snapDirection == .BOTTOM {
             startingVerticalPosition = startingVerticalPosition + oldHeight - newHeight
         }
@@ -80,21 +89,12 @@ public class SnapBehaviour: Behaviour {
         }
     }
     
-    func getStatusBarHeight() -> CGFloat {
-        if UIApplication.shared.isStatusBarHidden {
-            return 0
-        }
-        
-        let statusBarSize = UIApplication.shared.statusBarFrame.size
-        let statusBarHeight = min(statusBarSize.width, statusBarSize.height)
-        return statusBarHeight
-    }
-    
-    
     //We expand the views when the vc is about to appear
     public func vcWillAppear() {
+        if shouldDerivePosition {
+            self.startingVerticalPosition = view.frame.origin.y
+        }
         self.snapDistance = view.bounds.height
-        self.startingVerticalPosition = view.frame.origin.y
         if currentSnapState != .EXPANDED {
             snapExpand()
             applyAlpha()
@@ -114,7 +114,7 @@ public class SnapBehaviour: Behaviour {
     }
     
     public func handleGestureFromDependantScroll(gestureInfo: PanGestureInformation, scrollTranslationInfo: ScrollTranslationInformation) {
-            handleOngoingGesture(gestureInfo: gestureInfo, scrollTranslationInfo: scrollTranslationInfo)
+        handleOngoingGesture(gestureInfo: gestureInfo, scrollTranslationInfo: scrollTranslationInfo)
     }
     
     //We fully expand/contract the views when the gesture has ended
@@ -136,7 +136,6 @@ public class SnapBehaviour: Behaviour {
     }
     
     public func scrollDidTranslateAfterGesture(scrollTranslationInfo: ScrollTranslationInformation) {
-
     }
     
     
