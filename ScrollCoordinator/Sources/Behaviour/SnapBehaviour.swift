@@ -25,25 +25,25 @@ public protocol SnapDelegate: class {
 }
 
 //Behaviour which allows a view to gradually disappear/appear with the ScrollMovements
-public class SnapBehaviour: Behaviour {
+open class SnapBehaviour: Behaviour {
     public var needsPostGestureInfo: Bool = false
     
     //Defines the direction in which the view wants to snap
-    let snapDirection: SnapDirection
+    public let snapDirection: SnapDirection
     
     //The view which needs the SnapBehaviour
-    let view: UIView
+    public let view: UIView
     
     //Properties which control the SnapBehaviour
-    var snapDistance: CGFloat = 0
-    var startingVerticalPosition: CGFloat = 0
+    public var snapDistance: CGFloat = 0
+    public var startingVerticalPosition: CGFloat = 0
     var currentSnapState = SnapState.EXPANDED
     
     //Whether the startingPosition should be derived
     var shouldDerivePosition = true
     
     //Defines whether the we need the "fade away" effect during snapping
-    let isFadeEnabled: Bool
+    public let isFadeEnabled: Bool
     
     //Needed in case we have pull to refresh
     let refreshControl: UIRefreshControl?
@@ -53,7 +53,7 @@ public class SnapBehaviour: Behaviour {
     var newStatusBarHeight: CGFloat?
     
     //For delegating snap updates
-    weak var snapDelegate: SnapDelegate?
+    weak public var snapDelegate: SnapDelegate?
     
     public init(snapDirection: SnapDirection, view: UIView, isFadeEnabled: Bool = false, refreshControl: UIRefreshControl?, snapDelegate: SnapDelegate?, startPostion: CGFloat? = nil) {
         self.snapDirection = snapDirection
@@ -214,11 +214,11 @@ public class SnapBehaviour: Behaviour {
     }
     
     //Reset parameters when a new gesture starts
-    public func gestureDidStart(scrollView: UIScrollView) {
+    open func gestureDidStart(scrollView: UIScrollView) {
     }
     
     //Applying alpha to gradually make a view transparent as it is being snapped
-    func applyAlpha() {
+    open func applyAlpha() {
         //Need this only if fade is enabled
         guard isFadeEnabled else {
             return
