@@ -57,6 +57,10 @@ func removeBehaviour(view: UIView) {
 scrollCoordinator?.removeBehaviour(view: view)
 }
 
+func getBehaviour(for view: UIView) -> Behaviour? {
+return scrollCoordinator?.getBehaviour(for: view)
+}
+
 func registerScrollViewToCoordinator(scrollView: UIScrollView) {
 scrollCoordinator?.registerScrollView(scrollView: scrollView)
 }

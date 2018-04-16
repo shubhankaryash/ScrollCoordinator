@@ -5,10 +5,10 @@
 
 import Foundation
 
-public class NavbarSnapBehaviour: SnapBehaviour {
+open class NavbarSnapBehaviour: SnapBehaviour {
     
     //The underlying scrollView which contains the navigation bar
-    var scrollView: UIScrollView
+    public var scrollView: UIScrollView
     
     public init(snapDirection: SnapDirection, navController: UINavigationController, scrollView: UIScrollView, refreshControl: UIRefreshControl?, snapDelegate: SnapDelegate?) {
         self.scrollView = scrollView
@@ -22,33 +22,33 @@ public class NavbarSnapBehaviour: SnapBehaviour {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc func applicationWillEnterForeground() {
+    @objc open func applicationWillEnterForeground() {
         if currentSnapState != .EXPANDED {
             snapExpand()
             applyAlpha()
         }
     }
     
-    override public func vcDidSubLayoutViews() {
+    override open func vcDidSubLayoutViews() {
         updateContentInsets()
     }
     
-    override func incrementalExpand(deltaOffset: CGFloat) {
+    override open func incrementalExpand(deltaOffset: CGFloat) {
         super.incrementalExpand(deltaOffset: deltaOffset)
         updateContentInsets()
     }
     
-    override func snapExpand() {
+    override open func snapExpand() {
         super.snapExpand()
         updateContentInsets()
     }
     
-    override func incrementalContract(deltaOffset: CGFloat) {
+    override open func incrementalContract(deltaOffset: CGFloat) {
         super.incrementalContract(deltaOffset: deltaOffset)
         updateContentInsets()
     }
     
-    override func snapContract() {
+    override open func snapContract() {
         super.snapContract()
         updateContentInsets()
     }

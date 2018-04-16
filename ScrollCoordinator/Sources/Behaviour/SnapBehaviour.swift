@@ -12,7 +12,7 @@ public enum SnapDirection {
 }
 
 //Enum specifying the states of the view possible during the snapping behaviour
-enum SnapState {
+public enum SnapState {
     case EXPANDED
     case EXPANDING
     case CONTRACTED
@@ -37,20 +37,20 @@ open class SnapBehaviour: Behaviour {
     //Properties which control the SnapBehaviour
     public var snapDistance: CGFloat = 0
     public var startingVerticalPosition: CGFloat = 0
-    var currentSnapState = SnapState.EXPANDED
+    public var currentSnapState = SnapState.EXPANDED
     
     //Whether the startingPosition should be derived
-    var shouldDerivePosition = true
+    public var shouldDerivePosition = true
     
     //Defines whether the we need the "fade away" effect during snapping
     public let isFadeEnabled: Bool
     
     //Needed in case we have pull to refresh
-    let refreshControl: UIRefreshControl?
+    public let refreshControl: UIRefreshControl?
     
     //For handling changing StatusBarHeight
-    var oldStatusBarHeight: CGFloat?
-    var newStatusBarHeight: CGFloat?
+    public var oldStatusBarHeight: CGFloat?
+    public var newStatusBarHeight: CGFloat?
     
     //For delegating snap updates
     weak public var snapDelegate: SnapDelegate?
@@ -75,7 +75,7 @@ open class SnapBehaviour: Behaviour {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc func statusBarHeightDidChange() {
+    @objc open func statusBarHeightDidChange() {
         newStatusBarHeight = ScrollCoordinatorUtils.getStatusBarHeight()
         if let newHeight = newStatusBarHeight, let oldHeight = oldStatusBarHeight, snapDirection == .BOTTOM {
             startingVerticalPosition = startingVerticalPosition + oldHeight - newHeight
@@ -90,7 +90,7 @@ open class SnapBehaviour: Behaviour {
     }
     
     //We expand the views when the vc is about to appear
-    public func vcWillAppear() {
+    open func vcWillAppear() {
         if shouldDerivePosition {
             self.startingVerticalPosition = view.frame.origin.y
         }
@@ -102,23 +102,23 @@ open class SnapBehaviour: Behaviour {
     }
     
     //We expand the views when the vc is about to disappear
-    public func vcWillDisappear() {
+    open func vcWillDisappear() {
         if currentSnapState != .EXPANDED {
             snapExpand()
             applyAlpha()
         }
     }
     
-    public func vcDidSubLayoutViews(){
+    open func vcDidSubLayoutViews(){
         viewDidUpdate()
     }
     
-    public func handleGestureFromDependantScroll(gestureInfo: PanGestureInformation, scrollTranslationInfo: ScrollTranslationInformation) {
+    open func handleGestureFromDependantScroll(gestureInfo: PanGestureInformation, scrollTranslationInfo: ScrollTranslationInformation) {
         handleOngoingGesture(gestureInfo: gestureInfo, scrollTranslationInfo: scrollTranslationInfo)
     }
     
     //We fully expand/contract the views when the gesture has ended
-    public func gestureDidFinish(gestureInfo: PanGestureInformation, scrollView: UIScrollView) {
+    open func gestureDidFinish(gestureInfo: PanGestureInformation, scrollView: UIScrollView) {
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
             if self?.currentSnapState == .CONTRACTING {
                 self?.snapContract()
@@ -131,17 +131,15 @@ open class SnapBehaviour: Behaviour {
         })
     }
     
-    public func getDependantScrollView() -> UIScrollView? {
+    open func getDependantScrollView() -> UIScrollView? {
         return nil
     }
     
-    public func scrollDidTranslateAfterGesture(scrollTranslationInfo: ScrollTranslationInformation) {
+    open func scrollDidTranslateAfterGesture(scrollTranslationInfo: ScrollTranslationInformation) {
     }
     
-    
-    
     //We gradually expand/contract the views while the gesture is going on
-    func handleOngoingGesture(gestureInfo: PanGestureInformation, scrollTranslationInfo: ScrollTranslationInformation) {
+    open func handleOngoingGesture(gestureInfo: PanGestureInformation, scrollTranslationInfo: ScrollTranslationInformation) {
         // Ignore duplicate scroll events or events in which there is no vertical scroll
         if(gestureInfo.verticalDelta == 0 || scrollTranslationInfo.verticalDelta == 0) {
             return
@@ -178,7 +176,7 @@ open class SnapBehaviour: Behaviour {
     }
     
     //Fully contract the view when the user lifts his finger ie ends the gesture
-    func snapContract() {
+    open func snapContract() {
         currentSnapState = .CONTRACTED
         if snapDirection == .TOP {
             self.view.frame.origin.y = self.startingVerticalPosition - self.snapDistance
@@ -188,7 +186,7 @@ open class SnapBehaviour: Behaviour {
     }
     
     //Gradually contract the view as the user is scrolling
-    func incrementalContract(deltaOffset: CGFloat) {
+    open func incrementalContract(deltaOffset: CGFloat) {
         currentSnapState = .CONTRACTING
         if snapDirection == .TOP {
             view.frame.origin.y = max(view.frame.origin.y - deltaOffset, startingVerticalPosition - snapDistance)
@@ -198,13 +196,13 @@ open class SnapBehaviour: Behaviour {
     }
     
     //Fully expand the view when the user lifts his finger ie ends the gesture
-    func snapExpand() {
+    open func snapExpand() {
         currentSnapState = .EXPANDED
         self.view.frame.origin.y = self.startingVerticalPosition
     }
     
     //Gradually expand the view as the user is scrolling
-    func incrementalExpand(deltaOffset: CGFloat) {
+    open func incrementalExpand(deltaOffset: CGFloat) {
         currentSnapState = .EXPANDING
         if snapDirection == .TOP {
             view.frame.origin.y = min(view.frame.origin.y + deltaOffset, startingVerticalPosition)
