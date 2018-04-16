@@ -7,6 +7,7 @@ import UIKit
 import ScrollCoordinator
 
 class AnchorBehaviourViewController: UIViewController, ScrollCoordinatorManager {
+    
     //Variable of ScrollCoordinatorManager protocol
     var scrollCoordinator: ScrollCoordinator?
     
@@ -52,6 +53,10 @@ class AnchorBehaviourViewController: UIViewController, ScrollCoordinatorManager 
     
     func removeBehaviour(view: UIView) {
         scrollCoordinator?.removeBehaviour(view: view)
+    }
+    
+    func getBehaviour(for view: UIView) -> Behaviour? {
+        return scrollCoordinator?.getBehaviour(for: view)
     }
     
     func registerScrollViewToCoordinator(scrollView: UIScrollView) {

@@ -6,16 +6,15 @@
 import Foundation
 
 //Behaviour to scroll upto a certain point, after which the scroll would be "anchored" even as the views below it continue to scroll
-public class AnchorBehaviour: Behaviour {
+open class AnchorBehaviour: Behaviour {
     public var needsPostGestureInfo: Bool = false
-    
-    private let shouldPreventOriginalScroll: Bool
+    public let shouldPreventOriginalScroll: Bool
 
     //The scrollView which needs to be anchored
-    let scrollView: UIScrollView
+    public let scrollView: UIScrollView
     
     //The height at which the scrollView needs to be anchored
-    let anchorHeight: CGFloat
+    public let anchorHeight: CGFloat
     
     public init(scrollView: UIScrollView, anchorHeight: CGFloat, shouldPreventOriginalScroll: Bool) {
         self.scrollView = scrollView
@@ -23,21 +22,21 @@ public class AnchorBehaviour: Behaviour {
         self.shouldPreventOriginalScroll = shouldPreventOriginalScroll
     }
     
-    public func vcWillAppear(){
+    open func vcWillAppear(){
         //Reset offset to starting position
         let newContentOffset = CGPoint(x: 0, y: 0)
         scrollView.setContentOffset(newContentOffset, animated: false)
     }
     
-    public func vcWillDisappear() {
+    open func vcWillDisappear() {
         //Nothing
     }
     
-    public func vcDidSubLayoutViews(){
+    open func vcDidSubLayoutViews(){
         //Nothing
     }
     
-    public func handleGestureFromDependantScroll(gestureInfo: PanGestureInformation, scrollTranslationInfo: ScrollTranslationInformation) {
+    open func handleGestureFromDependantScroll(gestureInfo: PanGestureInformation, scrollTranslationInfo: ScrollTranslationInformation) {
         
         if gestureInfo.verticalDelta == 0 {
             return
@@ -51,24 +50,20 @@ public class AnchorBehaviour: Behaviour {
         }
     }
     
-    public func getDependantScrollView() -> UIScrollView? {
+    open func getDependantScrollView() -> UIScrollView? {
         return nil
     }
     
-    public func gestureDidStart(scrollView: UIScrollView) {
-        
+    open func gestureDidStart(scrollView: UIScrollView) {
     }
     
-    
-    public func gestureDidFinish(gestureInfo: PanGestureInformation, scrollView: UIScrollView) {
-        
+    open func gestureDidFinish(gestureInfo: PanGestureInformation, scrollView: UIScrollView) {
     }
     
-    public func scrollDidTranslateAfterGesture(scrollTranslationInfo: ScrollTranslationInformation) {
-
+    open func scrollDidTranslateAfterGesture(scrollTranslationInfo: ScrollTranslationInformation) {
     }
     
-    func scrollingTowardsBottom(gestureInfo: PanGestureInformation, scrollTranslationInfo: ScrollTranslationInformation) {
+    open func scrollingTowardsBottom(gestureInfo: PanGestureInformation, scrollTranslationInfo: ScrollTranslationInformation) {
         let scrollViewOffset = scrollView.contentOffset
         let deltaOffset = gestureInfo.verticalDelta
         if  (scrollViewOffset.y > 0) {
@@ -80,7 +75,7 @@ public class AnchorBehaviour: Behaviour {
         }
     }
     
-    func scrollingTowardsTop(gestureInfo: PanGestureInformation, scrollTranslationInfo: ScrollTranslationInformation) {
+    open func scrollingTowardsTop(gestureInfo: PanGestureInformation, scrollTranslationInfo: ScrollTranslationInformation) {
         let scrollViewOffset = scrollView.contentOffset
         let deltaOffset = gestureInfo.verticalDelta
         if  (scrollViewOffset.y < anchorHeight) {

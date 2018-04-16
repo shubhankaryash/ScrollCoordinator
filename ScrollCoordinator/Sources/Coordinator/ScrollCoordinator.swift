@@ -14,18 +14,23 @@ public class ScrollCoordinator: NSObject, PanGestureHandlerDelegate {
     //Maintaining the map of behaviours each attached to a view. These behaviours need to be passed the scroll information and vc level callbacks
     var mapOfBehaviours = [UIView: Behaviour]()
     
-    //Allows addition of custom behaviours to the coordinatorLayout. These behaviours will be receiving the scroll event and vc level callbacks
+    //Allows addition of custom behaviours to the ScrollCoordinator. These behaviours will be receiving the scroll event and vc level callbacks
     public func addBehaviour(view: UIView, behaviour: Behaviour) {
         mapOfBehaviours[view] = behaviour
     }
     
-    //Allows removal of custom behaviours already added to the coordinatorLayout
+    //Allows removal of custom behaviours already added to the ScrollCoordinator
     public func removeBehaviour(view: UIView) {
         mapOfBehaviours.removeValue(forKey: view)
     }
     
+    //Allows removal of custom behaviours already added to the ScrollCoordinator
+    public func getBehaviour(for view: UIView) -> Behaviour? {
+        return mapOfBehaviours[view]
+    }
     
-    //Allows registration of a scrollView to the coordinatorLayout. This will make the coordinator layout listen to the scroll events in these and pass it along to all the behaviours
+    
+    //Allows registration of a scrollView to the ScrollCoordinator. This will make the ScrollCoordinator listen to the scroll events in these and pass it along to all the behaviours
     public func registerScrollView(scrollView: UIScrollView) {
         let gestureHandler = PanGestureHandler(scrollView: scrollView)
         gestureHandler.gestureHandlerDelegate = self
