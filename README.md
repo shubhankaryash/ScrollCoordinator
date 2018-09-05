@@ -34,7 +34,7 @@ Anchoring the ScrollView <br />
 
 ## Usage
 
-For the usage make your view controller conform to the ScrollCoordinatorManager protocol. The scrollCoordinator needs to be initialised if you are planning to use it. You can have your custom logic of when you want/need to initialise this. The implementation here describes the minimal content within the methods. You could have your custom logic and perform further operation if you want to, but passing these events on to the scroll coordinator is a must.
+For the usage, make your view controller conform to the ScrollCoordinatorManager protocol. The scrollCoordinator needs to be initialised if you are planning to use it. You can have your custom logic of when/if you want/need to initialise this. The implementation here has the bare minimum content within the methods. You could have your custom logic and perform further operations if you want to, but passing these events on to the ScrollCoordinator is a must.
 
 ~~~swift
 //Implement the ScrollCoordinatorManager in your view controller
@@ -45,36 +45,36 @@ var scrollCoordinator: ScrollCoordinator?
 /*
 Methods of ScrollCoordinatorManager protocol
 */
-func getScrollCoordinatorLayout() -> ScrollCoordinator? {
-return scrollCoordinator
+func getScrollCoordinator() -> ScrollCoordinator? {
+    return scrollCoordinator
 }
 
 func addBehaviour(view: UIView, behaviour: Behaviour) {
-scrollCoordinator?.addBehaviour(view: view, behaviour: behaviour)
+    scrollCoordinator?.addBehaviour(view: view, behaviour: behaviour)
 }
 
 func removeBehaviour(view: UIView) {
-scrollCoordinator?.removeBehaviour(view: view)
+    scrollCoordinator?.removeBehaviour(view: view)
 }
 
 func getBehaviour(for view: UIView) -> Behaviour? {
-return scrollCoordinator?.getBehaviour(for: view)
+    return scrollCoordinator?.getBehaviour(for: view)
 }
 
 func registerScrollViewToCoordinator(scrollView: UIScrollView) {
-scrollCoordinator?.registerScrollView(scrollView: scrollView)
+    scrollCoordinator?.registerScrollView(scrollView: scrollView)
 }
 
 func informCoordinatorVCWillAppear() {
-scrollCoordinator?.vcWillAppear()
+    scrollCoordinator?.vcWillAppear()
 }
 
 func informCoordinatorVCWillDisappear() {
-scrollCoordinator?.vcWillDisappear()
+    scrollCoordinator?.vcWillDisappear()
 }
 
 func informCoordinatorVCDidSublayoutViews() {
-scrollCoordinator?.vcDidSublayoutViews()
+    scrollCoordinator?.vcDidSublayoutViews()
 }
 }
 ~~~
@@ -84,30 +84,30 @@ All the scrollviews for which you need the gesture and scroll events need to be 
 registerScrollViewToCoordinator(scrollView: tableView)
 ~~~
 
-Similarly all the behaviours which you want need to be added to the VC implementing the scrollCoordinator manager. This is again method implemented by YourViewController. Note that NavBarSnapBehaviour is not supported in nested scroll views
+Similarly all the behaviours which you want need to be added to the VC implementing the scrollCoordinator manager. This is again implemented by YourViewController. Note that NavBarSnapBehaviour is not supported in nested scroll views.
 ~~~swift
 //Adding NavBarSnapBehaviour
 if (navigationController != nil || navigationController?.navigationBar != nil) {
-if let navController = navigationController {
-self.extendedLayoutIncludesOpaqueBars = true //this needs to be done
-addBehaviour(view: navController.navigationBar, behaviour: NavbarSnapBehaviour(snapDirection: .TOP, navController: navController, scrollView: tableView, refreshControl: nil, snapDelegate: nil))
-}
+    if let navController = navigationController {
+        self.extendedLayoutIncludesOpaqueBars = true //this needs to be done
+        addBehaviour(view: navController.navigationBar, behaviour: NavbarSnapBehaviour(snapDirection: .TOP, navController: navController, scrollView: tableView, refreshControl: nil, snapDelegate: nil))
+    }
 }
 
 //Adding the SnapBehaviour to the bottom bar
 if let bottomBar = navigationController?.tabBarController?.tabBar {
-addBehaviour(view: bottomBar, behaviour: SnapBehaviour(snapDirection: .BOTTOM, view: bottomBar, refreshControl: nil, snapDelegate: nil))
+    addBehaviour(view: navController.navigationBar, behaviour: NavbarSnapBehaviour(snapDirection: .TOP, navController: navController, scrollView: tableView, refreshControl: nil, snapDelegate: nil))
 }
 
 //Adding the AnchorBehaviour
 if isAnchorBehaviourEnabled {
-tableView.isScrollEnabled = false //this needs to be disabled to allow the behaviour to scroll the view
-let anchorHeight: CGFloat = 60 //this is the height where the scroll will be anchored
-addBehaviour(view: tableView, behaviour: AnchorBehaviour(scrollView: tableView, anchorHeight: anchorHeight, shouldPreventOriginalScroll: true))
+    tableView.isScrollEnabled = false //this needs to be disabled to allow the behaviour to scroll the view
+    let anchorHeight: CGFloat = 60 //this is the height where the scroll will be anchored
+    addBehaviour(view: tableView, behaviour: AnchorBehaviour(scrollView: tableView, anchorHeight: anchorHeight, shouldPreventOriginalScroll: true))
 }
 ~~~
 
-For making your  own custom behaviour you must conform to the Behaviour protocol.
+For making your own custom behaviours you must conform to the Behaviour protocol.
 ~~~swift
 class PercentageBehaviour: Behaviour {
 //This variable determines whether you would receive the scroll events after gesture ends. If you want to listen only to the gestures keep this false. Otherwise you can make this true.
