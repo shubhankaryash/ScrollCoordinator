@@ -38,7 +38,7 @@ open class AnchorBehaviour: Behaviour {
     
     open func handleGestureFromDependantScroll(gestureInfo: PanGestureInformation, scrollTranslationInfo: ScrollTranslationInformation) {
         
-        if gestureInfo.verticalDelta == 0 {
+        if (gestureInfo.verticalDelta == 0) || (gestureInfo.horizontalDelta > 0 && abs(atan(gestureInfo.verticalDelta/gestureInfo.horizontalDelta)) <= CGFloat.pi / 10) {
             return
         }
         
