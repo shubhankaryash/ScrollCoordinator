@@ -68,7 +68,7 @@ open class SnapBehaviour: Behaviour {
         }
         
         oldStatusBarHeight = ScrollCoordinatorUtils.getStatusBarHeight()
-        NotificationCenter.default.addObserver(self, selector: #selector(SnapBehaviour.statusBarHeightDidChange), name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SnapBehaviour.statusBarHeightDidChange), name: UIApplication.didChangeStatusBarFrameNotification, object: nil)
     }
     
     deinit {
@@ -154,7 +154,7 @@ open class SnapBehaviour: Behaviour {
         
         //Return if we detect bottom bouncing effect
         let insets = getContentInsets(scrollView: scrollView)
-        let scrollFrame = UIEdgeInsetsInsetRect(scrollView.bounds, insets)
+        let scrollFrame = scrollView.bounds.inset(by: insets)
         let scrollableAmount: CGFloat = scrollView.contentSize.height - scrollFrame.height
         if scrollableAmount < 3 * snapDistance && currentSnapState == .EXPANDED {
             return

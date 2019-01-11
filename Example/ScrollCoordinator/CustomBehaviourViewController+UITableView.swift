@@ -41,7 +41,7 @@ extension CustomBehaviourViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: customBehaviourCellIdentifier, for: indexPath)
         cell.textLabel?.text = "Item \((indexPath as NSIndexPath).row)"
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
     }
 }
@@ -61,7 +61,7 @@ class HeaderView: UIView {
         
         let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: maxWidth, height: 50))
         let labelText = "Percentage Scrolled"
-        let textAttributes = [NSAttributedStringKey.font: UIFont(name: "Palatino-Roman", size: 20), NSAttributedStringKey.foregroundColor: UIColor.black]
+        let textAttributes = [NSAttributedString.Key.font: UIFont(name: "Palatino-Roman", size: 20), NSAttributedString.Key.foregroundColor: UIColor.black]
         headerLabel.attributedText = NSAttributedString(string: labelText, attributes: textAttributes)
         addSubview(headerLabel)
     }
