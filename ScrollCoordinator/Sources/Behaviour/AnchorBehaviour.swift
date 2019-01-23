@@ -9,16 +9,20 @@ import Foundation
 open class AnchorBehaviour: Behaviour {
     public var needsPostGestureInfo: Bool = false
     public let shouldPreventOriginalScroll: Bool
-
+    
+    //This is the angle below which gesture events would be ignored
+    public let angleThreshhold: CGFloat
+    
     //The scrollView which needs to be anchored
     public let scrollView: UIScrollView
     
     //The height at which the scrollView needs to be anchored
     public let anchorHeight: CGFloat
     
-    public init(scrollView: UIScrollView, anchorHeight: CGFloat, shouldPreventOriginalScroll: Bool) {
+    public init(scrollView: UIScrollView, anchorHeight: CGFloat, shouldPreventOriginalScroll: Bool, angleThreshhold: CGFloat = CGFloat.pi/6) {
         self.scrollView = scrollView
         self.anchorHeight = anchorHeight
+        self.angleThreshhold = angleThreshhold
         self.shouldPreventOriginalScroll = shouldPreventOriginalScroll
     }
     
@@ -37,8 +41,7 @@ open class AnchorBehaviour: Behaviour {
     }
     
     open func handleGestureFromDependantScroll(gestureInfo: PanGestureInformation, scrollTranslationInfo: ScrollTranslationInformation) {
-        
-        if gestureInfo.verticalDelta == 0 {
+        guard gestureInfo.isGestureVertical(with: angleThreshhold) else {
             return
         }
         

@@ -45,4 +45,27 @@ public class PanGestureInformation {
         }
         horizontalDelta =  abs(lastGestureOffset.x - currentGestureOffset.x)
     }
+    
+    // Calculates and returns angle of the gesture from the horizontal axis
+    public func gestureAngle() -> CGFloat {
+        return atan(self.verticalDelta/self.horizontalDelta)
+    }
+    
+    // Calculates and returns angle of the gesture from the horizontal axis. If this angle is greater than the angleThreshhold, the gesture is deemed to be a vertical gesture
+    public func isGestureVertical(with angleThreshhold: CGFloat = CGFloat.pi/6) -> Bool {
+        if gestureAngle() > angleThreshhold {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    // Calculates and returns angle of the gesture from the horizontal axis. If this angle is less than or equal to the angleThreshhold, the gesture is deemed to be a horizontal gesture
+    public func isGestureHorizontal(with angleThreshhold: CGFloat = CGFloat.pi/6) -> Bool {
+        if gestureAngle() <= angleThreshhold {
+            return true
+        } else {
+            return false
+        }
+    }
 }
