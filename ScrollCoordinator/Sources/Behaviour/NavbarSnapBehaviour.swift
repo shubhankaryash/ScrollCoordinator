@@ -15,7 +15,7 @@ open class NavbarSnapBehaviour: SnapBehaviour {
         super.init(snapDirection: snapDirection, view: navController.navigationBar, isFadeEnabled: true, refreshControl: refreshControl, snapDelegate: snapDelegate)
         
         //Add listener for app coming to foreground
-        NotificationCenter.default.addObserver(self, selector: #selector(NavbarSnapBehaviour.applicationWillEnterForeground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(NavbarSnapBehaviour.applicationWillEnterForeground), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     deinit {

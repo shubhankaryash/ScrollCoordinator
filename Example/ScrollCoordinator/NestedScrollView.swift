@@ -48,7 +48,7 @@ class NestedScrollView: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: nestedScrollCellIdentifier, for: indexPath)
         cell.textLabel?.text = "\(teams[indexPath.row])"
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
     }
     

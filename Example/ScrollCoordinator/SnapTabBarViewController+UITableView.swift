@@ -29,7 +29,7 @@ extension SnapTabBarViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         cell.textLabel?.text = "\(tabIdentifier) item \((indexPath as NSIndexPath).row)"
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
     }
 }

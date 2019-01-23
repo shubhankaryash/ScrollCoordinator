@@ -37,7 +37,7 @@ class ViewController: UITableViewController {
     
     func setupNavigationController(navigationController: UINavigationController){
         navigationController.navigationBar.isTranslucent = false
-        navigationController.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController.navigationBar.tintColor = UIColor.white
         navigationController.navigationBar.barTintColor = UIColor(red: 41/255, green: 141/255, blue: 250/255, alpha: 1)
     }
@@ -105,7 +105,7 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100))
         let labelText = "List Of Behaviours"
-        let textAttributes = [NSAttributedStringKey.font: UIFont(name: "Palatino-Roman", size: 28), NSAttributedStringKey.foregroundColor: UIColor.black]
+        let textAttributes = [NSAttributedString.Key.font: UIFont(name: "Palatino-Roman", size: 28), NSAttributedString.Key.foregroundColor: UIColor.black]
         headerView.attributedText = NSAttributedString(string: labelText, attributes: textAttributes)
         return headerView
     }
