@@ -233,7 +233,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				76076E046CB15E3A967BE2D6 /* [CP] Embed Pods Frameworks */,
-				865C044F6EC0701C62E2B679 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,8 +251,6 @@
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				FC91BC3946B2BE4F47E5F5D4 /* [CP] Embed Pods Frameworks */,
-				B7FBE085B7BFC8D40DBF2787 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -380,51 +377,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollCoordinator_Example/Pods-ScrollCoordinator_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		865C044F6EC0701C62E2B679 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollCoordinator_Example/Pods-ScrollCoordinator_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B7FBE085B7BFC8D40DBF2787 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollCoordinator_Tests/Pods-ScrollCoordinator_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FC91BC3946B2BE4F47E5F5D4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollCoordinator_Tests/Pods-ScrollCoordinator_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

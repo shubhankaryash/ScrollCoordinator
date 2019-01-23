@@ -1,5 +1,5 @@
 PODS:
-  - ScrollCoordinator (0.7.0)
+  - ScrollCoordinator (0.8.0)
 
 DEPENDENCIES:
   - ScrollCoordinator (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ScrollCoordinator: 09cc3187ee76df7a3d4c0c13101efee7e59fb462
+  ScrollCoordinator: b24fdb86a7952ddaf4b7b2c50b16a0787bda83f2
 
 PODFILE CHECKSUM: e2c3bc33e249c09b205e06f304e928731eef74d1
 
