@@ -4,6 +4,11 @@
 [![License](https://img.shields.io/cocoapods/l/ScrollCoordinator.svg?style=flat)](http://cocoapods.org/pods/ScrollCoordinator)
 [![Platform](https://img.shields.io/cocoapods/p/ScrollCoordinator.svg?style=flat)](http://cocoapods.org/pods/ScrollCoordinator)
 
+## IMPORTANT NOTE
+
+This repo has been moved to a new location now. Please use this going forward. Versions 1.1.0 and later would be created from that.
+https://github.com/flipkart-incubator/scroll-coordinator-ios
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
